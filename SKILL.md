@@ -19,12 +19,26 @@ metadata:
 
 ## 触发条件
 
+### 适用场景
 用户输入包含以下任一关键词或场景：
 - "写PRD" / "产品需求文档" / "PRD撰写"
 - "功能模块拆解" / "模块拆解"
 - "会议纪要转PRD" / "会议纪要" + "产品"
 - "需求文档" / "feature spec" / "product requirement"
 - 用户提供会议纪要的文本内容
+- 用户提供用户故事（User Story）列表
+- 用户描述产品功能需求，需要结构化文档输出
+
+### 不适用场景
+以下场景**不应使用**本skill，应使用其他skill：
+
+| 场景 | 原因 | 应使用的Skill |
+|------|------|-------------|
+| 用户已有PRD，需要输出开发代码 | 本skill只到PRD文档，不涉及代码实现 | `writing-plans` / `subagent-driven-development` |
+| 用户需要修复现有代码bug | 本skill不处理代码调试 | `systematic-debugging` |
+| 用户要求直接写代码不做需求分析 | 本skill强制先做需求分析 | `writing-plans`（直接实施计划） |
+| 用户只需要简单页面原型，无需求文档 | 本skill overhead 过大 | `claude-design`（直接生成HTML） |
+| 用户要求做竞品市场调研 | 本skill聚焦需求文档，调研只是输入 | `kanban-worker` + `market-research` profile |
 
 ---
 
@@ -127,7 +141,11 @@ metadata:
 
 ### Phase 3: 看板任务分发（Kanban Dispatch）
 
-**目标**：将模块拆解为可并行的看板任务，分发给子agent执行。
+**目标**：将模块拆解为可并行的看板任务，创建任务记录并分发给子agent执行。
+
+**本Phase的边界**：
+- ✅ 做：创建任务、定义任务内容、确认任务清单
+- ❌ 不做：实际撰写PRD内容（那是Phase 4的工作）
 
 #### Step 3.1: 创建看板任务
 
@@ -171,6 +189,10 @@ metadata:
 ### Phase 4: 并行撰写（Parallel Writing）
 
 **目标**：各子agent独立完成模块PRD撰写。
+
+**本Phase的边界**：
+- ✅ 做：子agent执行撰写、收集输出、质量检查
+- ❌ 不做：模块拆解（Phase 2已完成）、最终整合（Phase 6的工作）
 
 #### Step 4.1: 子agent输出格式
 
