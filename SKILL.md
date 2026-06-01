@@ -196,7 +196,7 @@ metadata:
 
 #### Step 4.1: 子agent输出格式
 
-每个子agent必须输出以下结构的PRD子文档：
+每个子agent必须基于 `templates/prd-module-template.md` 输出以下结构的PRD子文档：
 
 ```markdown
 # [模块名称] PRD
@@ -210,7 +210,11 @@ metadata:
 ## 7. 业务规则
 ## 8. 异常处理
 ## 9. 验收标准
+## 10. 依赖与风险
+## 11. 附录
 ```
+
+> 完整模板含字段说明和示例，见 `templates/prd-module-template.md`。子agent应直接填充模板，不改动结构。
 
 #### Step 4.2: 全局约束传递
 
