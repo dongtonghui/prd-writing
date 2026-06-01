@@ -387,10 +387,12 @@ dispatch `logic-review` profile 的子agent执行评审：
 
 ## 关联Skill
 
-| Skill | 用途 | 调用时机 |
-|-------|------|---------|
-| kanban-orchestrator | 看板任务编排 | Phase 3 任务分发 |
-| kanban-worker | 看板任务执行 | Phase 3-4 子agent执行 |
-| claude-design | UI Demo设计 | Phase 7 Demo生成 |
-| popular-web-designs | 设计系统参考 | Phase 7 风格选择 |
-| writing-plans | 实施计划撰写 | PRD完成后，如需输出开发计划 |
+| Skill | 用途 | 调用时机 | 详细用法 |
+|-------|------|---------|---------|
+| kanban-orchestrator | 看板任务编排 | Phase 3 任务分发 | 见 `references/skill-usage-guide.md` §kanban-orchestrator |
+| kanban-worker | 看板任务执行 | Phase 3-4 子agent执行 | 见 `references/skill-usage-guide.md` §kanban-worker |
+| claude-design | UI Demo设计 | Phase 7 Demo生成 | 见 `references/skill-usage-guide.md` §claude-design |
+| popular-web-designs | 设计系统参考 | Phase 7 风格选择 | 见 `references/skill-usage-guide.md` §popular-web-designs |
+| writing-plans | 实施计划撰写 | PRD完成后，如需输出开发计划 | 见 `references/skill-usage-guide.md` §writing-plans |
+
+> 每个关联skill的具体调用参数、代码示例、输出规范详见 `references/skill-usage-guide.md`。
