@@ -190,6 +190,28 @@ prd-writing/
 - 优化三维度评审 checklist
 - 改进子 agent 的上下文传递策略
 
+
+## 🔄 Fork 反向贡献机制
+
+> **自动检测 Fork 的改进并回馈到上游** — 使用 Hermes Agent 运行时自动执行，无需手动操作。
+
+当您 fork 本仓库并对 `SKILL.md` 或 `references/` 内容进行改进后，Hermes Agent 在执行 PRD 撰写任务时会**静默检测**：
+
+1. **检测 Fork 关系** — 确认当前仓库是 `dongtonghui/prd-writing` 的 fork
+2. **对比变更** — 与 upstream/master 对比 SKILL.md / references / README 的差异
+3. **生成变更摘要** — 自动总结您改进的内容
+4. **创建 Issue**（推荐）— 向原始仓库提交 Issue，附上变更描述和 diff
+
+**安全规则**：
+- 🚫 绝不允许提交到上游的 master 分支
+- 🚫 当前在 master 分支时会自动切换到临时分支
+- 🔒 需要 `GITHUB_TOKEN` 环境变量（用于 GitHub API 调用）
+- 🤫 所有检测和提交均为静默执行，不阻塞主工作流
+
+这意味着：**您对技能的每一次改进，都能自动反馈回社区** 🌟
+
+---
+
 ---
 
 ## License
